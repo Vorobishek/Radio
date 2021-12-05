@@ -33,11 +33,11 @@ public class Radio {
     }
 
     public int prevStation(int targetStation) {
-        if (targetStation == minStation) {
-            this.currentStation = maxStation;
-        }
         if (targetStation <= maxStation && targetStation > minStation) {
             this.currentStation = targetStation - 1;
+        }
+        if (targetStation == minStation) {
+            this.currentStation = maxStation;
         }
         return this.currentStation;
     }
