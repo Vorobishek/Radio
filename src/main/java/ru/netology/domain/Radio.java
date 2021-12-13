@@ -3,10 +3,10 @@ package ru.netology.domain;
 public class Radio {
     private int currentStation;
     private int currentVolume;
-    int minStation = 0;
-    int maxStation = 9;
-    int minVolume = 0;
-    int maxVolume = 10;
+    private final int minStation = 0;
+    private final int maxStation = 9;
+    private final int minVolume = 0;
+    private final int maxVolume = 10;
 
     public int getCurrentStation() {
         return currentStation;
@@ -22,24 +22,25 @@ public class Radio {
         this.currentStation = targetStation;
     }
 
-    public int nextStation(int targetStation) {
-        if (targetStation < maxStation) {
-            this.currentStation = targetStation + 1;
+    public int nextStation() {
+
+        if (currentStation < maxStation) {
+            this.currentStation = currentStation + 1;
         }
-        if (targetStation == maxStation) {
+        if (currentStation == maxStation) {
             this.currentStation = minStation;
         }
         return this.currentStation;
     }
 
-    public int prevStation(int targetStation) {
-        if (targetStation <= maxStation && targetStation > minStation) {
-            this.currentStation = targetStation - 1;
+    public int prevStation() {
+        if (currentStation == minStation) {
+            currentStation = maxStation;
         }
-        if (targetStation == minStation) {
-            this.currentStation = maxStation;
+        else {
+            currentStation = currentStation - 1;
         }
-        return this.currentStation;
+        return currentStation;
     }
 
     public int getCurrentVolume() {
@@ -56,23 +57,23 @@ public class Radio {
         this.currentVolume = targetVolume;
     }
 
-    public int addVolume(int targetVolume) {
-        if (targetVolume == maxVolume) {
+    public int addVolume() {
+        if (currentVolume == maxVolume) {
             return this.currentVolume = maxVolume;
         }
 
-        this.currentVolume = targetVolume + 1;
+        this.currentVolume = currentVolume + 1;
         return this.currentVolume;
     }
 
     public int dropVolume() {
         if (this.currentVolume == minVolume) {
-            return this.currentVolume;
+            return currentVolume;
         }
 
-        this.currentVolume = this.currentVolume - 1;
+        currentVolume = currentVolume - 1;
 
-        return this.currentVolume;
+        return currentVolume;
     }
 
 }
