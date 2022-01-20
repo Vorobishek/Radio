@@ -50,8 +50,8 @@ class RadioTest {
     @Test
     public void shouldNextStation(){
         Radio radio = new Radio();
-        int currentStation = 0;
-        int expected = 1;
+        int currentStation = 8;
+        int expected = 9;
         int actual;
 
         radio.setCurrentStation(currentStation);
@@ -76,8 +76,8 @@ class RadioTest {
     @Test
     public void shouldPrevStation(){
         Radio radio = new Radio();
-        int currentStation = 3;
-        int expected = 2;
+        int currentStation = 1;
+        int expected = 0;
         int actual;
 
         radio.setCurrentStation(currentStation);
@@ -160,8 +160,8 @@ class RadioTest {
     @Test
     public void shouldAddVolume(){
         Radio radio = new Radio();
-        int currentVolume = 0;
-        int expected = 1;
+        int currentVolume = 9;
+        int expected = 10;
         int actual;
 
         radio.setCurrentVolume(currentVolume);
@@ -186,8 +186,8 @@ class RadioTest {
     public void shouldDropVolume(){
 
         Radio radio = new Radio();
-        int currentVolume = 9;
-        int expected = 8;
+        int currentVolume = 1;
+        int expected = 0;
         int actual;
         radio.setCurrentVolume(currentVolume);
 
