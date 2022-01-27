@@ -1,18 +1,23 @@
 package ru.netology.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+
+//конструктор по умолчанию
+@NoArgsConstructor
+
 public class Radio {
+@Getter
     public int currentStation;
     private int currentVolume;
+    private int amountOfStations = 10;
     private final int minStation = 0;
     private int maxStation = 9;
     private final int minVolume = 0;
     private final int maxVolume = 100;
-    private int amountOfStations = 10;
 
-//конструктор по умолчанию
 
-    public Radio() {
-    }
 //конструктор когда пользователь не задает кол-во станций, но вводит номер радиостанции с пульта
 
     public Radio(int currentStation) {
@@ -25,11 +30,6 @@ public class Radio {
         this.amountOfStations = amountOfStations;
         maxStation = this.amountOfStations - 1;
         this.currentStation = currentStation;
-    }
-
-
-    public int getCurrentStation() {
-        return currentStation;
     }
 
     public void setCurrentStation(int targetStation) {
