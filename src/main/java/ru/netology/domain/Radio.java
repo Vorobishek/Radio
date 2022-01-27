@@ -1,12 +1,32 @@
 package ru.netology.domain;
 
 public class Radio {
-    private int currentStation;
+    public int currentStation;
     private int currentVolume;
     private final int minStation = 0;
-    private final int maxStation = 9;
+    private int maxStation = 9;
     private final int minVolume = 0;
-    private final int maxVolume = 10;
+    private final int maxVolume = 100;
+    private int amountOfStations = 10;
+
+//конструктор по умолчанию
+
+    public Radio() {
+    }
+//конструктор когда пользователь не задает кол-во станций, но вводит номер радиостанции с пульта
+
+    public Radio(int currentStation) {
+        this.currentStation = currentStation;
+    }
+
+// конструктор когда пользователь задает и кол-во станций и вводит номер радиостанции с пульта
+
+    public Radio(int amountOfStations, int currentStation) {
+        this.amountOfStations = amountOfStations;
+        maxStation = this.amountOfStations - 1;
+        this.currentStation = currentStation;
+    }
+
 
     public int getCurrentStation() {
         return currentStation;
@@ -14,10 +34,10 @@ public class Radio {
 
     public void setCurrentStation(int targetStation) {
         if (targetStation < minStation) {
-            return;
+            targetStation = 0;
         }
         if (targetStation > maxStation) {
-            return;
+            targetStation = maxStation;
         }
         currentStation = targetStation;
     }
@@ -49,15 +69,17 @@ public class Radio {
         if (targetVolume < minVolume) {
             return;
         }
-        if (targetVolume > maxVolume) {
+        if (targetVolume >= maxVolume) {
+            currentVolume = maxVolume;
             return;
         }
 
         currentVolume = targetVolume;
     }
 
-    public int addVolume() {
-        if (currentVolume == maxVolume) {
+    public int addVolume(int currentVolume) {
+        if (currentVolume >= maxVolume) {
+            currentVolume = maxVolume;
             return currentVolume;
         }
 
@@ -66,8 +88,9 @@ public class Radio {
         return currentVolume;
     }
 
-    public int dropVolume() {
-        if (currentVolume == minVolume) {
+    public int dropVolume(int currentVolume) {
+        if (currentVolume <= minVolume) {
+            currentVolume = minVolume;
             return currentVolume;
         }
 
